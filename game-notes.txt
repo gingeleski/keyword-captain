@@ -1,0 +1,11 @@
+- Only words containing 3-10 tiles are accepted
+
+- Can go diagonal
+
+- Each tile has a score in lower righthand corner
+
+- These bonus multipliers are sometimes available (lower lefthand corner):
+	2L - double the letter score
+	3L - triple the letter score
+	2W - double the word score
+	3W - triple the word score
