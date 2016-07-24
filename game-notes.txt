@@ -9,3 +9,10 @@
 	3L - triple the letter score
 	2W - double the word score
 	3W - triple the word score
+
+Basic algorithm?
+- Find highest scoring word in the table
+- Mark those cells as "used"
+- Find highest scoring word with remaining cells
+- Mark those cells as "used"
+- Find final highest scoring word with remaining cells
