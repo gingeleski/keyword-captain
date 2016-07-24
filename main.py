@@ -1,4 +1,5 @@
 from copy import copy
+from Board import Board
 
 def loadWordList(wordfile):
     wordlist = None
@@ -23,4 +24,7 @@ def saveWordList(filename, wordlist):
         file.write(word)
     file.close()
 
+# Warning - hacky testing below
 wordlist = loadWordList("words.txt")
+brd = Board()
+print(brd.board[0][0].value)
