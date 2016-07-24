@@ -1,2 +1,2 @@
-# keyword-captain
-Bot for Keyword
+# Keyword Captain
+Bot to play Keyword on King Games / Royal Games.
