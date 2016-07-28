@@ -9,16 +9,22 @@ class Board(object):
             cl = []
             for j in range(size):
                 this_cell = Cell()
-                this_cell.set_x(j)
-                this_cell.set_y(i)
+                this_cell.set_x(i)
+                this_cell.set_y(j)
                 cl.append(this_cell)
             self.board.append(cl)
     
     def get_neighbors(self, cell):
         neighbors = []
-        for i in range(rowNumber-2, rowNumber+1):
-            for j in range(columnNumber-2, columnNumber+1):
-                if  i >= 0 and i < len(self.board):
-                    if j >= 0 and j < len(self.board[0]):
-                        neighbors.append(self.board[i][j])
+        x, y = cell.get_coordinates()
+        
+        for col in range(x-1, x+2):
+            for row in range(y-1, y+2):
+                if col >= 0 and col < len(self.board[0]):
+                    if row >= 0 and row < len(self.board):
+                        if col == x and row == y:
+                            pass
+                        else:
+                            neighbors.append(self.board[col][row])
+
         return neighbors
