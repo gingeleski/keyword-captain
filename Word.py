@@ -1,8 +1,11 @@
 class Word(object):
     word = []
 
-    def __init__():
+    def __init__(self):
         self.word = []
+
+    def add_cell(self,cell):
+        self.word.append(cell)
 
     def get_string(self):
         string = []
