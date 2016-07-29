@@ -1,3 +1,6 @@
+WORD_MIN_LENGTH = 3
+WORD_MAX_LENGTH = 10
+
 def loadWordList(wordfile):
     wordlist = None
     with open(wordfile) as f:
@@ -7,7 +10,8 @@ def loadWordList(wordfile):
 def cleanWordList(wordlist):
     working_list = copy(wordlist)
     for word in working_list:
-        if (len(word) < 3) or (len(word) > 10):
+        if (len(word) < WORD_MIN_LENGTH) \
+                or (len(word) > WORD_MAX_LENGTH):
             working_list.remove(word)
             print('removing ', word)
         elif "'" in word:
