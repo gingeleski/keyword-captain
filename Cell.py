@@ -17,8 +17,14 @@ class Cell(object):
     def get_letters(self):
         return self.letters
 
+    def set_letters(self, letters):
+        self.letters = letters
+
     def get_value(self):
         return self.value
+
+    def set_value(self, value):
+        self.value = value
 
     def get_coordinates(self):
         return self.x, self.y
