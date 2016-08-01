@@ -1,7 +1,10 @@
+from enum import Enum
+
 class Cell(object):
     letters = ''
     value = -1
     is_used = False
+    multiplier = None
 
     # coordinates on board
     x = -1
@@ -13,6 +16,7 @@ class Cell(object):
         self.is_used = False
         self.x = -1
         self.y = -1
+        self.multiplier = None
 
     def get_letters(self):
         return self.letters
@@ -43,3 +47,21 @@ class Cell(object):
 
     def set_y(self, y):
         self.y = y
+
+    def set_multiplier(self, multiplier):
+        """
+        Valid multipliers are the following:
+        DW - Double word
+        TW - Triple word
+        DL - Double letter
+        TL - Triple letter
+        """
+        if multiplier != 'DW':
+            if multiplier != 'TW':
+                if multiplier != 'DL':
+                    if multiplier != 'TL':
+                        return
+        self.multiplier = multiplier
+
+    def get_multiplier(self):
+        return self.multiplier
