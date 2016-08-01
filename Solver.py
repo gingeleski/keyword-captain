@@ -13,13 +13,11 @@ class Solver(object):
         self.results_list = []
 
     def solve(self, word_tree, board):
-        # TODO fix function bug - returning nothing, though generates results inproc
         height = len(board.board)
         width = len(board.board[0])
         results_list = []
         for root_position in [ (x, y) for x in range(width) for y in range(height) ]:
             self.explore_words(word_tree, board, [root_position])
-            # TODO fix bug where results_list goes to zero here
         return self.results_list
 
     def explore_words(self, word_tree, board, positions_list):
@@ -29,9 +27,8 @@ class Solver(object):
         sub_tree = self.tree_search(word_tree, word)
         if sub_tree == {}:
             return
-        #if True in sub_tree:
         if WORD_MAX_LENGTH >= word.get_length() >= WORD_MIN_LENGTH:
-                self.results_list.append(word)
+            self.results_list.append(word)
         x, y = positions_list[-1]
         for (dx, dy) in [ (dx, dy) for dx in [-1, 0, 1] for dy in [-1, 0, 1] ]:
             nx, ny = x+dx, y+dy

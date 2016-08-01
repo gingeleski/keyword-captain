@@ -1,8 +1,6 @@
 WORD_MIN_LENGTH = 3
 WORD_MAX_LENGTH = 10
 
-word_tree = {}
-
 def addWordToTree(word_tree, word):
     """
     Add word to given tree. Can be used recursively.
