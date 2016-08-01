@@ -19,6 +19,7 @@ class Solver(object):
         for root_position in [ (x, y) for x in range(width) for y in range(height) ]:
             self.explore_words(word_tree, board, [root_position])
         self.sanitize_results(word_list)
+        self.results_list.sort(cmp=lambda a,b: -cmp(a.get_value(), b.get_value()))
         return self.results_list
 
     def remove_result_duplicates(self):
