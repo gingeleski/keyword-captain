@@ -34,6 +34,13 @@ class Cell(object):
         self.value = value
 
     def get_value(self):
+        if self.multiplier == 'DL':
+            # Double letter multiplier is active
+            return self.value * 2
+        elif self.multiplier == 'TL':
+            # Triple letter multiplier is active
+            return self.value * 3
+        # Either there's a word multiplier or no multiplier
         return self.value
 
     def set_value(self, value):
