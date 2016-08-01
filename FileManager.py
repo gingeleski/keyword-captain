@@ -1,22 +1,19 @@
 WORD_MIN_LENGTH = 3
 WORD_MAX_LENGTH = 10
 
-def addWordToTree(tree, word):
+word_tree = {}
+
+def addWordToTree(word_tree, word):
     """
     Add word to given tree. Can be used recursively.
     """
     if word == "":
-        tree[True] = True
+        word_tree[True] = True
         return
     head, tail = word[0], word[1:]
-    if head not in tree:
-        tree[head] = {}
-        # Add rest of the word to the subtree
-        addWordToTree(tree[head], tail)
-    else:
-        # If given empty word, add a final state in the tree, to
-        # note that the path from the root to here is a valid word
-        tree[EOW] = EOW
+    if head not in word_tree:
+        word_tree[head] = {}
+    addWordToTree(word_tree[head], tail)
 
 def loadWordTree(wordfile):
     """
@@ -25,7 +22,7 @@ def loadWordTree(wordfile):
     """
     word_tree = {}
     for word in open(wordfile):
-        addWordToTree(tree, word)
+        addWordToTree(word_tree, word)
     return word_tree
 
 def loadWordList(wordfile):
