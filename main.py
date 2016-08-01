@@ -1,10 +1,12 @@
 from copy import copy
 from Board import Board
-from FileManager import loadWordList
-from Solver import solve
+from FileManager import loadWordTree
+from Solver import solve, results_list
 
 # Warning - hacky testing below
-#wordlist = loadWordList("words.txt")
+
+# This will only work on Unix...
+word_tree = loadWordTree("/usr/share/dict/words")
 
 brd = Board(4)
 
@@ -56,9 +58,4 @@ brd.board[3][2].set_value(1)
 brd.board[3][3].set_letters("u")
 brd.board[3][3].set_value(1)
 
-all_possible_words = solve(brd)
-
-print("Returned " + str(len(all_possible_words)) + " words")
-
-for p in all_possible_words:
-    print(p.get_string())
+results = solve(word_tree, brd)
