@@ -63,4 +63,4 @@ results = my_solver.solve(word_tree, brd)
 print("Solved and got " + str(len(results)) + " results")
 
 for word in results:
-    print(str(word))
+    print(str(word) + " " + str(word.get_value()))
