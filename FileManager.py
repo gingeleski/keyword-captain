@@ -20,13 +20,13 @@ def loadWordTree(wordfile):
     """
     word_tree = {}
     for word in open(wordfile):
-        addWordToTree(word_tree, word)
+        addWordToTree(word_tree, word.rstrip().lower())
     return word_tree
 
 def loadWordList(wordfile):
     wordlist = None
     with open(wordfile) as f:
-        wordlist = f.readlines()
+        wordlist = [word.rstrip().lower() for word in f]
     return wordlist
 
 def cleanWordList(wordlist):
