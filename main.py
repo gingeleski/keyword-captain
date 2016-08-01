@@ -1,7 +1,7 @@
 from copy import copy
 from Board import Board
 from FileManager import loadWordTree
-from Solver import solve, results_list
+from Solver import Solver
 
 # Warning - hacky testing below
 
@@ -58,4 +58,9 @@ brd.board[3][2].set_value(1)
 brd.board[3][3].set_letters("u")
 brd.board[3][3].set_value(1)
 
-results = solve(word_tree, brd)
+my_solver = Solver()
+results = my_solver.solve(word_tree, brd)
+print("Solved and got " + str(len(results)) + " results")
+
+for word in results:
+    print(str(word))
