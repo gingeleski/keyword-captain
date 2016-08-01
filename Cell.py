@@ -17,8 +17,17 @@ class Cell(object):
     def get_letters(self):
         return self.letters
 
-    def set_letters(self, letters):
+    def set_letters(self, letters, value=-1):
+        """
+        Setter method for letter(s) in this cell, can optionally
+        specify the score value at the same time.
+
+        Args:
+            letters (string) - one to two letters contained in this cell
+            value (int) - *optional* the score value of this cell
+        """
         self.letters = letters
+        self.value = value
 
     def get_value(self):
         return self.value
