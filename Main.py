@@ -1,12 +1,12 @@
 from copy import copy
 from Board import Board
-from FileManager import loadWordTree
+from FileManager import loadWordTree, loadWordList
 from Solver import Solver
 
 # Warning - hacky testing below
 
-# This will only work on Unix...
-word_tree = loadWordTree("/usr/share/dict/words")
+word_tree = loadWordTree("words_scrabble.txt")
+word_list = loadWordList("words_scrabble.txt")
 
 brd = Board(4)
 
@@ -59,8 +59,8 @@ brd.board[3][3].set_letters("u")
 brd.board[3][3].set_value(1)
 
 my_solver = Solver()
-results = my_solver.solve(word_tree, brd)
+results = my_solver.solve(word_tree, word_list, brd)
 print("Solved and got " + str(len(results)) + " results")
 
-for word in results:
-    print(str(word) + " " + str(word.get_value()))
+#for word in results:
+#    print(str(word) + " " + str(word.get_value()))

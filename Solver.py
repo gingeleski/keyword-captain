@@ -12,13 +12,28 @@ class Solver(object):
     def __init__(self):
         self.results_list = []
 
-    def solve(self, word_tree, board):
+    def solve(self, word_tree, word_list, board):
         height = len(board.board)
         width = len(board.board[0])
         results_list = []
         for root_position in [ (x, y) for x in range(width) for y in range(height) ]:
             self.explore_words(word_tree, board, [root_position])
+        self.sanitize_results(word_list)
         return self.results_list
+
+    def remove_result_duplicates(self):
+        """
+        Removes word duplicates from the result list.
+        If one instance has a higher score, that is kept.
+        """
+        pass # TODO
+
+    def sanitize_results(self, word_list):
+        """
+        Given a word list, grooms the results list to make sure it only
+        contains matches to the word list.
+        """
+        self.results_list = [word for word in self.results_list if str(word) in word_list]
 
     def explore_words(self, word_tree, board, positions_list):
         word = Word()
