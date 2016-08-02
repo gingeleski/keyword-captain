@@ -31,7 +31,7 @@ brd.board[1][1].set_value(2)
 
 brd.board[1][2].set_letters("r")
 brd.board[1][2].set_value(1)
-brd.board[0][1].set_multiplier("DL")
+brd.board[1][2].set_multiplier("DL")
 
 brd.board[1][3].set_letters("a")
 brd.board[1][3].set_value(1)
@@ -41,7 +41,7 @@ brd.board[2][0].set_value(1)
 
 brd.board[2][1].set_letters("a")
 brd.board[2][1].set_value(1)
-brd.board[0][1].set_multiplier("DL")
+brd.board[2][1].set_multiplier("DL")
 
 brd.board[2][2].set_letters("d")
 brd.board[2][2].set_value(2)
@@ -57,7 +57,7 @@ brd.board[3][1].set_value(3)
 
 brd.board[3][2].set_letters("w")
 brd.board[3][2].set_value(4)
-brd.board[0][1].set_multiplier("DW")
+brd.board[3][2].set_multiplier("DW")
 
 brd.board[3][3].set_letters("t")
 brd.board[3][3].set_value(1)
