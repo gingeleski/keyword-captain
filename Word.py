@@ -22,7 +22,7 @@ class Word(object):
         for cell in self.word:
             if cell.get_multiplier() == 'DW':
                 # Double word multiplier is active
-                word_multipler *= 2
+                word_multiplier *= 2
             elif cell.get_multiplier() == 'TW':
                 # Triple word multiplier is active
                 word_multiplier *= 3
