@@ -1,12 +1,11 @@
-from copy import copy
 from Board import Board
 from FileManager import loadWordTree, loadWordList
 from Solver import Solver
 
 # Warning - hacky testing below
 
-word_tree = loadWordTree("words_scrabble.txt")
-word_list = loadWordList("words_scrabble.txt")
+word_tree = loadWordTree("word_files/words_scrabble.txt")
+word_list = loadWordList("word_files/words_scrabble.txt")
 
 brd = Board(4)
 
@@ -61,6 +60,3 @@ brd.board[3][3].set_value(1)
 my_solver = Solver()
 results = my_solver.solve(word_tree, word_list, brd)
 print("Solved and got " + str(len(results)) + " results")
-
-for word in results:
-    print(str(word) + " " + str(word.get_value()))
