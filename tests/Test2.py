@@ -5,8 +5,8 @@ from Board import Board
 from FileManager import loadWordTree, loadWordList
 from Solver import Solver
 
-word_tree = loadWordTree("../word_files/words_scrabble.txt")
-word_list = loadWordList("../word_files/words_scrabble.txt")
+word_tree = loadWordTree("../resources/words_scrabble.txt")
+word_list = loadWordList("../resources/words_scrabble.txt")
 
 brd = Board(4)
 
