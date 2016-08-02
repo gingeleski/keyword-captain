@@ -1,5 +1,7 @@
 # Keyword Captain
-Bot to play Keyword on King Games / Royal Games.
+Bot to play Boggle-style word games. This includes:
+- Keyword (royalgames.com)
+- Scrabble Boggle (worldwinner.com)
 ## Setup
 The Keyword Captain repo is meant to be run from a virtual environment.
 ```
