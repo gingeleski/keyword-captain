@@ -1,5 +1,6 @@
 from PIL import Image
 import PIL.ImageGrab
+#import pytesseract
 
 def takeScreenshot():
     """
@@ -9,4 +10,6 @@ def takeScreenshot():
         (Image)
     """
 
-    return PIL.ImageGrab.grab(box)
+    return PIL.ImageGrab.grab()
+
+#print(pytesseract.image_to_string(takeScreenshot()))
