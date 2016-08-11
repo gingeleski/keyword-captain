@@ -1,0 +1,15 @@
+Word Link
+royalgames.com/games/word-games/word-link
+
+The following seven staggered rows of letters, given these lengths:
+9
+8
+9
+8
+9
+8
+9
+
+Board is essentially destructive and changes after you score a word.
+Seem to use Scrabble letter scoring.
+Rows are not squared up perfectly (uneven). That has to be considered.
