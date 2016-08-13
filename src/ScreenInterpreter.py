@@ -1,3 +1,4 @@
+import cv2
 from PIL import Image
 import PIL.ImageGrab
 #import pytesseract
@@ -12,4 +13,7 @@ def takeScreenshot():
 
     return PIL.ImageGrab.grab()
 
-#print(pytesseract.image_to_string(takeScreenshot()))
+image = takeScreenshot()
+image.save("out.png")
+
+img = cv2.imread("out.png")
