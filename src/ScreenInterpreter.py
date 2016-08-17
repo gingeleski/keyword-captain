@@ -1,7 +1,9 @@
 import cv2
+import numpy as np
 from PIL import Image
 import PIL.ImageGrab
 #import pytesseract
+import scipy.ndimage as sp
 
 class ScreenInterpreter(object):
     def __init__(self):
@@ -35,8 +37,8 @@ class ScreenInterpreter(object):
         result[result>=confidence]=1.0
         result[result<confidence]=0.0
         
-        ccs = get_connected_components(result)
-        return correct_bounding_boxes(subimage, ccs)  
+        ccs = self.get_connected_components(result)
+        return self.correct_bounding_boxes(subimage, ccs)  
 
 
     def cc_shape(self, component):
@@ -58,7 +60,7 @@ class ScreenInterpreter(object):
         (image_h, image_w)=subimage.shape[:2]
         corrected = []
         for cc in connected_components:
-            (x, y, w, h) = cc_shape(cc)
+            (x, y, w, h) = self.cc_shape(cc)
             presumed_x = x+w/2
             presumed_y = y+h/2
             corrected.append((slice(presumed_y, presumed_y+image_h), slice(presumed_x, presumed_x+image_w)))
@@ -89,11 +91,20 @@ class ScrabbleBoggleInterpreter(ScreenInterpreter):
     def __init__(self):
         ScreenInterpreter.__init__(self)
 
-    def locateBoard(self):
-        pass
+    def locateBoard(self, img):
+        ref_pt_1 = cv2.imread("../resources/scrabble-boggle_img/game-area_top-left.png")
+        ref_pt_2 = cv2.imread("../resources/scrabble-boggle_img/game-area_bottom-right.png")
 
-si = ScreenInterpreter()
-image = si.takeScreenshot()
-image.save("out.png")
+        top_left = self.find_subimages(img, ref_pt_1)[0]
+        top_left_x = top_left[1]
+        top_left_y = top_left[0]
 
-img = cv2.imread("out.png")
+        bottom_right = self.find_subimages(img, ref_pt_2)[0]
+        bottom_right_x = bottom_right[1]
+        bottom_right_y = bottom_right[0]
+
+sbi = ScrabbleBoggleInterpreter()
+
+img1 = cv2.imread("../resources/scrabble-boggle_img/sample-fullscreen.png")
+
+sbi.locateBoard(img1)

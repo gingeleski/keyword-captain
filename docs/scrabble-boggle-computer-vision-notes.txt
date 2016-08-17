@@ -1,0 +1,9 @@
+Output for top left corner:
+[(slice(89.5, 206.5, None), slice(295.5, 555.5, None))]
+**295.5 pixels to the right, 89.5 pixels down (upper lefthand)
+555.5 pixels to the right, 206.5 pixels down (lower righthand)
+
+Output for lower right corner:
+[(slice(561.5, 634.5, None), slice(863.5, 1053.5, None))]
+863.5 pixels to the right, 561.5 pixels down (upper lefthand)
+**1053.5 pixels to the right, 634.5 pixels down (lower righthand)
