@@ -4,6 +4,8 @@ Bot to play Boggle-style word games. This includes:
 - Scrabble Boggle (worldwinner.com)
 
 ## Setup
+(TODO test and refine setup, I know I have to mention cv2)
+
 The Keyword Captain repo is meant to be run from a virtual environment.
 ```
 # if you don't have virtualenv installed...
