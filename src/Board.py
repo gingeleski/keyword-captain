@@ -28,3 +28,11 @@ class Board(object):
                             neighbors.append(self.board[col][row])
 
         return neighbors
+
+    def print(self):
+        print_string = " "
+        for x in self.board:
+            for y in x:
+                print_string += y.get_letters()
+                print_string += " "
+        print(print_string)
