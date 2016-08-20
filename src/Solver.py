@@ -19,7 +19,8 @@ class Solver(object):
         for root_position in [ (x, y) for x in range(width) for y in range(height) ]:
             self.explore_words(word_tree, board, [root_position])
         self.sanitize_results(word_list)
-        self.results_list.sort(cmp=lambda a,b: -cmp(a.get_value(), b.get_value()))
+        self.remove_result_duplicates()
+        self.sort_results()
         return self.results_list
 
     def remove_result_duplicates(self):
@@ -27,7 +28,22 @@ class Solver(object):
         Removes word duplicates from the result list.
         If one instance has a higher score, that is kept.
         """
-        pass # TODO
+        seen = []
+        no_dupes = []
+        for r in self.results_list:
+            if str(r) not in seen:
+                seen.append(str(r))
+                no_dupes.append(r)
+        self.results_list = no_dupes
+
+    def sort_results(self):
+        """
+        Implementation of bubble sort
+        """
+        for i in range(len(self.results_list)):
+                for j in range(len(self.results_list)-1-i):
+                        if self.results_list[j].get_value() < self.results_list[j+1].get_value():
+                                self.results_list[j], self.results_list[j+1] = self.results_list[j+1], self.results_list[j]
 
     def sanitize_results(self, word_list):
         """

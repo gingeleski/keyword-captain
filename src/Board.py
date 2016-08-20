@@ -30,7 +30,7 @@ class Board(object):
         return neighbors
 
     def print(self):
-        print_string = " "
+        print_string = ""
         for x in self.board:
             for y in x:
                 print_string += y.get_letters()
