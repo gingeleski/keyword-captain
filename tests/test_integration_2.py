@@ -7,8 +7,8 @@ from Solver import Solver
 
 def test():
     # Use Scrabble word set
-    word_tree = loadWordTree("./resources/words_scrabble.txt")
-    word_list = loadWordList("./resources/words_scrabble.txt")
+    word_tree = loadWordTree("../wordlists/words_scrabble.txt")
+    word_list = loadWordList("../wordlists/words_scrabble.txt")
 
     brd = Board(4)
 
@@ -64,4 +64,11 @@ def test():
     results = my_solver.solve(word_tree, word_list, brd)
 
     # If no duplicates, expecting 89 results
-    assert len(results) == 89
+    print("----------------------------------------")
+    print("Integrated board solving test #2")
+    print("----------------------------------------")
+    print("Expected results length: 89")
+    print("Actual results length: " + str(len(results)))
+
+if __name__ == "__main__":
+    test()
