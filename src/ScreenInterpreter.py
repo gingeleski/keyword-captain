@@ -1,3 +1,4 @@
+from Board import Board
 import os
 from PIL import Image
 import PIL.ImageGrab
@@ -21,8 +22,8 @@ class ScreenInterpreter(object):
         return PIL.ImageGrab.grab()
 
 class ScrabbleBoggleInterpreter(ScreenInterpreter):
-    game_area_top_left = os.path.abspath("../resources/scrabble-boggle_img/game-area_top-left.png")
-    game_area_bottom_right = os.path.abspath("../resources/scrabble-boggle_img/game-area_bottom-right.png")
+    game_area_top_left = os.path.abspath("../img/scrabble_boggle/game_top-left.png")
+    game_area_bottom_right = os.path.abspath("../img/scrabble_boggle/game_bottom-right.png")
 
     game_area_top_left_x = -1
     game_area_top_left_y = -1
@@ -56,22 +57,74 @@ class ScrabbleBoggleInterpreter(ScreenInterpreter):
             self.game_area_bottom_right_x = bottom_right[0] + bottom_right[2]
             self.game_area_bottom_right_y = bottom_right[1] + bottom_right[3]
 
-    def isolateLetterBoard(self, img):
+    def isolate4LetterBoard(self, img):
         """
         Given an image of the screen, returns a cropped image of just
         the letter board
         """
         top_x = self.game_area_top_left_x + 263
         top_y = self.game_area_top_left_y + 81
-        bottom_x = self.game_area_bottom_right_x - 90
-        bottom_y = self.game_area_bottom_right_y - 50
+        bottom_x = self.game_area_bottom_right_x - 107
+        bottom_y = self.game_area_bottom_right_y - 78
 
         return img.crop((top_x, top_y, bottom_x, bottom_y))
 
+    def interpret4LetterBoard(self, img):
+        brd = Board(4)
+
+        letters_file_root = "../img/scrabble_boggle/letters/"
+        letters_file_list = os.listdir(letters_file_root)
+
+        cells_identified = 0
+
+        for letter_img in letters_file_list:
+            this_letter = letters_file_root + letter_img
+            results = pag.locateAll(this_letter, img)
+            for match in results:
+                cells_identified += 1
+                if match[0] < 93 and match[1] < 93:
+                    brd.board[0][0].set_letters(letter_img[0])
+                elif match[0] >= 93 and match[0] < 194 and match[1] < 93:
+                    brd.board[0][1].set_letters(letter_img[0])
+                elif match[0] >= 194 and match[0] < 292 and match[1] < 93:
+                    brd.board[0][2].set_letters(letter_img[0])
+                elif match[0] >= 292 and match[1] < 93:
+                    brd.board[0][3].set_letters(letter_img[0])
+                elif match[0] < 93 and match[1] >= 93 and match[1] < 193:
+                    brd.board[1][0].set_letters(letter_img[0])
+                elif match[0] >= 93 and match[0] < 194 and match[1] >= 93 and match[1] < 193:
+                    brd.board[1][1].set_letters(letter_img[0])
+                elif match[0] >= 194 and match[0] < 292 and match[1] >= 93 and match[1] < 193:
+                    brd.board[1][2].set_letters(letter_img[0])
+                elif match[0] >= 292 and match[1] >= 93 and match[1] < 193:
+                    brd.board[1][3].set_letters(letter_img[0])
+                elif match[0] < 93 and match[1] >= 193 and match[1] < 292:
+                    brd.board[2][0].set_letters(letter_img[0])
+                elif match[0] >= 93 and match[0] < 194 and match[1] >= 193 and match[1] < 292:
+                    brd.board[2][1].set_letters(letter_img[0])
+                elif match[0] >= 194 and match[0] < 292 and match[1] >= 193 and match[1] < 292:
+                    brd.board[2][2].set_letters(letter_img[0])
+                elif match[0] >= 292 and match[1] >= 193 and match[1] < 292:
+                    brd.board[2][3].set_letters(letter_img[0])
+                elif match[0] < 93 and match[1] >= 292:
+                    brd.board[3][0].set_letters(letter_img[0])
+                elif match[0] >= 93 and match[0] < 194 and match[1] >= 292:
+                    brd.board[3][1].set_letters(letter_img[0])
+                elif match[0] >= 194 and match[0] < 292 and match[1] >= 292:
+                    brd.board[3][2].set_letters(letter_img[0])
+                elif match[0] >= 292 and match[1] >= 292:
+                    brd.board[3][3].set_letters(letter_img[0])
+            if cells_identified == 16:
+                break
+
+        return brd
+
 sbi = ScrabbleBoggleInterpreter()
-the_path = os.path.abspath("../resources/scrabble-boggle_img/sample-fullscreen.png")
+the_path = os.path.abspath("../img/scrabble_boggle/fullscreen1.png")
 sbi.locateGameArea(the_path)
 
 im = Image.open(the_path)
-im_cropped = sbi.isolateLetterBoard(im)
-im_cropped.show()
+im_cropped = sbi.isolate4LetterBoard(im)
+
+test_board = sbi.interpret4LetterBoard(im_cropped)
+test_board.print()
