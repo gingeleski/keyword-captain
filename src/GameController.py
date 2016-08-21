@@ -97,8 +97,9 @@ class ScrabbleBoggleController(GameController):
                     # Error case
                     x = x_offset
                     y = y_offset
-                time.sleep(0.12)
+
                 self.click(x,y)
+                #time.sleep(0.15)
             # Click the last letter again to submit
             self.click(x,y)
 
