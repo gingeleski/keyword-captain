@@ -100,54 +100,72 @@ class ScrabbleBoggleInterpreter(ScreenInterpreter):
                 cells_identified += 1
                 letter = str(letter_img[:-4]).lower()
                 value = ScrabbleValues[letter]
+                index = ""
                 if match[0] < 93 and match[1] < 93:
                     brd.board[0][0].set_letters(letter)
                     brd.board[0][0].set_value(value)
+                    index = "0,0"
                 elif match[0] >= 93 and match[0] < 194 and match[1] < 93:
                     brd.board[0][1].set_letters(letter)
                     brd.board[0][1].set_value(value)
+                    index = "0,1"
                 elif match[0] >= 194 and match[0] < 292 and match[1] < 93:
                     brd.board[0][2].set_letters(letter)
                     brd.board[0][2].set_value(value)
+                    index = "0,2"
                 elif match[0] >= 292 and match[1] < 93:
                     brd.board[0][3].set_letters(letter)
                     brd.board[0][3].set_value(value)
+                    index = "0,3"
                 elif match[0] < 93 and match[1] >= 93 and match[1] < 193:
                     brd.board[1][0].set_letters(letter)
                     brd.board[1][0].set_value(value)
+                    index = "1,0"
                 elif match[0] >= 93 and match[0] < 194 and match[1] >= 93 and match[1] < 193:
                     brd.board[1][1].set_letters(letter)
                     brd.board[1][1].set_value(value)
+                    index = "1,1"
                 elif match[0] >= 194 and match[0] < 292 and match[1] >= 93 and match[1] < 193:
                     brd.board[1][2].set_letters(letter)
                     brd.board[1][2].set_value(value)
+                    index = "1,2"
                 elif match[0] >= 292 and match[1] >= 93 and match[1] < 193:
                     brd.board[1][3].set_letters(letter)
                     brd.board[1][3].set_value(value)
+                    index = "1,3"
                 elif match[0] < 93 and match[1] >= 193 and match[1] < 292:
                     brd.board[2][0].set_letters(letter)
                     brd.board[2][0].set_value(value)
+                    index = "2,0"
                 elif match[0] >= 93 and match[0] < 194 and match[1] >= 193 and match[1] < 292:
                     brd.board[2][1].set_letters(letter)
                     brd.board[2][1].set_value(value)
+                    index = "2,1"
                 elif match[0] >= 194 and match[0] < 292 and match[1] >= 193 and match[1] < 292:
                     brd.board[2][2].set_letters(letter)
                     brd.board[2][2].set_value(value)
+                    index = "2,2"
                 elif match[0] >= 292 and match[1] >= 193 and match[1] < 292:
                     brd.board[2][3].set_letters(letter)
                     brd.board[2][3].set_value(value)
+                    index = "2,3"
                 elif match[0] < 93 and match[1] >= 292:
                     brd.board[3][0].set_letters(letter)
                     brd.board[3][0].set_value(value)
+                    index = "3,0"
                 elif match[0] >= 93 and match[0] < 194 and match[1] >= 292:
                     brd.board[3][1].set_letters(letter)
                     brd.board[3][1].set_value(value)
+                    index = "3,1"
                 elif match[0] >= 194 and match[0] < 292 and match[1] >= 292:
                     brd.board[3][2].set_letters(letter)
                     brd.board[3][2].set_value(value)
+                    index = "3,2"
                 elif match[0] >= 292 and match[1] >= 292:
                     brd.board[3][3].set_letters(letter)
                     brd.board[3][3].set_value(value)
+                    index = "3,3"
+                print("Detected " + letter.upper() + " at " + index)
             if cells_identified == 16:
                 break
 
