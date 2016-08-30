@@ -1,3 +1,4 @@
+# Below are Scrabble tile scores (for Scrabble Boggle)
 ScrabbleValues = dict()
 ScrabbleValues['a'] = 1
 ScrabbleValues['b'] = 3
