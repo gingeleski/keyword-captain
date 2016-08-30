@@ -99,10 +99,7 @@ class ScrabbleBoggleController(GameController):
                     y = y_offset
 
                 self.click(x,y)
+                # ** Adjust between-click wait time below
                 #time.sleep(0.15)
             # Click the last letter again to submit
             self.click(x,y)
-
-sbc = ScrabbleBoggleController()
-sbc.captureAndSolve4Letter()
-sbc.playSolutions4Letter()
