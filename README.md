@@ -16,7 +16,7 @@ And could be extended to also include:
 
 ## Setup
 
-This was developed with the Python 3 variant of Anaconda. That can be obtained and installed from here.
+This was developed with the Python 3 variant of Anaconda. That can be obtained and installed from [here](https://www.continuum.io/downloads).
 
 After that, from the command line you should be able to...
 
