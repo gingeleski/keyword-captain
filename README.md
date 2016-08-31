@@ -3,6 +3,8 @@
 Bot to play Boggle-style word games. This currently includes:
 - Scrabble Boggle (worldwinner.com)
 
+*[Scrabble Boggle demo video](https://youtu.be/qKwM-4fLsbo)*
+
 And could be extended to also include:
 - Keyword (royalgames.com)
 
@@ -35,6 +37,9 @@ activate myenv
 
 # Now you can pull up a Scrabble Boggle window, run this alongside
 python src/runScrabbleBoggle.py
+
+# When you want to halt the bot, get your cursor into the upper
+# left hand corner of the screen and it'll throw an exception
 
 # When you're done, deactivate to get out of that env
 source deactivate
